@@ -35,7 +35,7 @@ function postUrlFromImageUrl(srcUrl) {
   const raw = u.searchParams.get("ig_cache_key");
   if (!raw) return null;
 
-  const base64Part = raw.split(".")[0];
+  const base64Part = raw.slice(0,26);
   let decoded;
   try {
     decoded = atob(base64Part); // standard base64 like "....=="
@@ -74,3 +74,4 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     openerTabId: tab && tab.id ? tab.id : undefined
   });
 });
+
